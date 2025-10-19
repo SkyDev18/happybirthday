@@ -20,6 +20,10 @@
       background: radial-gradient(circle at center, #0a0f2c 0%, #050716 100%);
       color: #fff;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     h1 {
@@ -27,7 +31,7 @@
       font-size: 2.5rem;
       color: #ffd700;
       text-shadow: 0 0 15px #ffda6b, 0 0 30px #ffae00;
-      margin-top: 70px;
+      margin-bottom: 15px;
     }
 
     .cake {
@@ -36,7 +40,6 @@
     }
 
     #tanggal {
-      margin-top: 15px;
       font-weight: 600;
       font-size: 1rem;
     }
@@ -198,13 +201,12 @@
       musik.currentTime = 0;
     });
 
-    // === Efek partikel love (diperbaiki supaya sampai atas lalu memudar) ===
+    // === Efek partikel love ===
     const canvas = document.getElementById("loveCanvas");
     const ctx = canvas.getContext("2d");
     let loves = [];
 
     function resizeCanvas() {
-      // set ukuran canvas ke innerWidth/innerHeight agar selalu menutupi viewport penuh
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     }
@@ -214,33 +216,25 @@
     class Love {
       constructor() {
         this.x = Math.random() * canvas.width;
-        this.y = canvas.height + Math.random() * 30 + 10; // mulai sedikit di bawah layar
-        this.size = Math.random() * 14 + 8;               // ukuran emoji
-        this.speedY = Math.random() * 1.2 + 0.8;          // kecepatan naik
-        this.startAlpha = Math.random() * 0.5 + 0.6;      // alpha awal
+        this.y = canvas.height + Math.random() * 30 + 10;
+        this.size = Math.random() * 14 + 8;
+        this.speedY = Math.random() * 1.2 + 0.8;
+        this.startAlpha = Math.random() * 0.5 + 0.6;
         this.alpha = this.startAlpha;
         this.life = 0;
       }
       update() {
-        // update posisi
         this.y -= this.speedY;
         this.life += this.speedY;
 
-        // hitung progress dari start ke titik di atas (kita pake range 0..1)
-        // targetY adalah sedikit di atas atas layar agar benar-benar menghilang
-        const totalDistance = canvas.height + 100; // jarak yang ingin ditempuh (dari bottom ke above top)
-        const traveled = canvas.height + 20 - this.y; // seberapa jauh sudah naik (0..~totalDistance)
+        const totalDistance = canvas.height + 100;
+        const traveled = canvas.height + 20 - this.y;
         const progress = Math.min(Math.max(traveled / totalDistance, 0), 1);
 
-        // alpha menurun saat progress mendekati 1 (fade saat hampir sampai atas)
-        // kita gunakan easing agar fade terasa lembut
         const easeOut = (t) => 1 - Math.pow(1 - t, 2);
         this.alpha = Math.max(0, this.startAlpha * (1 - easeOut(progress)));
 
-        // jika benar-benar di atas layar atau alpha sudah 0, tandai untuk dihapus
-        if (this.y < -40 || this.alpha <= 0.01) {
-          this.dead = true;
-        }
+        if (this.y < -40 || this.alpha <= 0.01) this.dead = true;
       }
       draw() {
         ctx.save();
@@ -253,10 +247,7 @@
 
     function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // spawn baru dengan probabilitas kecil supaya tidak terlalu banyak
       if (Math.random() < 0.06) loves.push(new Love());
-
       for (let i = loves.length - 1; i >= 0; i--) {
         loves[i].update();
         loves[i].draw();
