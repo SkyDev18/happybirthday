@@ -153,6 +153,20 @@
       #kejutan h2 {
         font-size: 1.8rem;
       }
+
+      #fotoUlangTahun {
+        width: 250px;
+        height: auto;
+        border-radius: 20px;
+        margin-top: 20px
+        box-shadow: 0 0 25px rgba(255, 215, 0, 0.4) ;
+        Transition: transform 0.3s ease;
+      }
+
+      #fotoUlangTahun:hover {
+       transform: scale(1.05) ;
+        box-shadow 0 0 35px rgba(255, 215, 0, 0.7) ;
+      }
     }
   </style>
 </head>
@@ -163,6 +177,8 @@
   <div id="tanggal"></div>
   <p id="ucapan">Hari ini adalah hari istimewa, di mana dunia terasa sedikit lebih indah karena kamu dilahirkan. 🌙</p>
 
+  <img src="1.jpg" alt="Foto Ulang Tahun" id="fotoUlangTahun">
+    
   <button id="btnKejutan">🎁 Lihat Kejutan</button>
 
   <div id="kejutan">
