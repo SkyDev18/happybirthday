@@ -158,26 +158,28 @@
         width: 250px;
         height: auto;
         border-radius: 20px;
-        margin-top: 20px;
+        margin-top: 25px;
         box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       #fotoUlangTahun:hover {
        transform: scale(1.05);
-       box-shadow: 0 0 35px rgba(255, 215, 0, 0.7);
+       box-shadow: 0 0 40px rgba(255, 215, 0, 0.7);
       }
     }
   </style>
 </head>
 <body>
-  <canvas id="loveCanvas"></canvas>
+  <canvas id="loveCanvas"></canvas> 
 
+  <img src="1.jpg" alt="Foto Ulang Tahun" id="fotoUlangTahun">
   <h1>🎂 Selamat Datang di Perayaan Ulang Tahun 🎂</h1>
   <div id="tanggal"></div>
   <p id="ucapan">Hari ini adalah hari istimewa, di mana dunia terasa sedikit lebih indah karena kamu dilahirkan. 🌙</p>
-
-  <img src="1.jpg" alt="Foto Ulang Tahun" id="fotoUlangTahun">
     
   <button id="btnKejutan">🎁 Lihat Kejutan</button>
 
