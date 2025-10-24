@@ -154,21 +154,12 @@
         font-size: 1.8rem;
       }
 
-      #fotoUlangTahun {
-        width: 250px;
+      .foto-kotak {
+        width: 180px;
         height: auto;
-        border-radius: 20px;
-        margin-top: 25px;
-        box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      #fotoUlangTahun:hover {
-       transform: scale(1.05);
-       box-shadow: 0 0 40px rgba(255, 215, 0, 0.7);
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        margin-bottom: 15px;
       }
     }
   </style>
@@ -176,7 +167,7 @@
 <body>
   <canvas id="loveCanvas"></canvas> 
 
-  <img src="IMG_20251023_191056_993.jpg" alt="Foto Ulang Tahun" id="fotoUlangTahun">
+  <img src="IMG_20251023_191056_993.jpg" alt="Foto" class="foto-kotak">
   <h1>🎂 Selamat Datang di Perayaan Ulang Tahun 🎂</h1>
   <div id="tanggal"></div>
   <p id="ucapan">Hari ini adalah hari istimewa, di mana dunia terasa sedikit lebih indah karena kamu dilahirkan. 🌙</p>
